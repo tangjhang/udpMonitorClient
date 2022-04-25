@@ -71,7 +71,7 @@ class UdpMonitorClient
                 'site' => $this->site,
                 'pid' => 0,
                 'memory' => '0kB',
-                'runTime' => $time
+                'run_time' => $time
             ];
         }
         $childrenPIds = explode(' ', $children);
