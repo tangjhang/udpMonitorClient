@@ -41,13 +41,13 @@ class UdpMonitorClient
 
     public function onWorkerStart(): void
     {
-        Timer::add($this->timeNum, [$this, 'senMessage']);
+        Timer::add($this->timeNum, [$this, 'sendMessage']);
     }
 
-    public function senMessage(): void
+    public function sendMessage(): void
     {
         $udp_connection = new AsyncUdpConnection($this->host . ':' . $this->port);
-        $data = json_encode($this->getMemory());
+        $data = json_encode(["data" => $this->getMemory(), "mark" => "memory"]);
         $udp_connection->onConnect = function ($udp_connection) use ($data) {
             $udp_connection->send($data);
             $udp_connection->close();
