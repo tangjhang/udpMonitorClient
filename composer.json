@@ -1,0 +1,20 @@
+{
+    "name": "umc/udpmitorclient",
+    "description": "regularly send monitoring data to the server",
+    "type": "1",
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "client\\": "client/"
+        }
+    },
+    "authors": [
+        {
+            "name": "tangjh",
+            "email": "tangjh@pvc123.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
