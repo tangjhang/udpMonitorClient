@@ -1,5 +1,5 @@
 {
-    "name": "umc/udpmitorclient",
+    "name": "myumc/udpmitorclient",
     "description": "regularly send monitoring data to the server",
     "type": "1",
     "require": {
