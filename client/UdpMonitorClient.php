@@ -83,7 +83,7 @@ class UdpMonitorClient
             }
             $mem = 0;
             if (preg_match('/VmRSS\s*?:\s*?(\d+?)\s*?kB/', $status, $match)) {
-                $mem = $match[1];
+                $mem = $match[1].'kB';
             }
             $data[] = [
                 'site' => $this->site,
