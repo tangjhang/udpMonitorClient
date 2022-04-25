@@ -28,20 +28,20 @@ class UdpMonitorClient
     /**
      * 定时发送时间
      */
-    private $sendTime;
+    private $timeNum;
 
 
-    public function __construct($host, $port, $site, $sendTime = 55)
+    public function __construct($host, $port, $site, $timeNum = 55)
     {
         $this->host = $host;
         $this->port = $port;
         $this->site = $site;
-        $this->sendTime = $sendTime;
+        $this->timeNum = $timeNum;
     }
 
     public function onWorkerStart(): void
     {
-        Timer::add($this->sendTime, [$this, 'senMessage']);
+        Timer::add($this->timeNum, [$this, 'senMessage']);
     }
 
     public function senMessage(): void
@@ -67,7 +67,12 @@ class UdpMonitorClient
         $data = [];
         $childrenFile = "/proc/$ppid/task/$ppid/children";
         if (!is_file($childrenFile) || !($children = file_get_contents($childrenFile))) {
-            return [];
+            return [
+                'site' => $this->site,
+                'pid' => 0,
+                'memory' => '0kB',
+                'runTime' => $time
+            ];
         }
         $childrenPIds = explode(' ', $children);
         foreach ($childrenPIds as $pid) {
@@ -84,7 +89,8 @@ class UdpMonitorClient
                 'site' => $this->site,
                 'pid' => $pid,
                 'memory' => $mem,
-                'runTime' => $time
+                'runTime' => $time,
+                'status' => 1
             ];
         }
         return $data;
