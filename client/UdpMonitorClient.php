@@ -89,7 +89,7 @@ class UdpMonitorClient
                 'site' => $this->site,
                 'pid' => $pid,
                 'memory' => $mem,
-                'runTime' => $time,
+                'run_time' => $time,
                 'status' => 1
             ];
         }
