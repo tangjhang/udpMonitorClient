@@ -1,7 +1,7 @@
 <?php
 
 
-namespace UdpMonitorClient\src\process;
+namespace UdpMonitorClient\process;
 
 
 use Carbon\Carbon;

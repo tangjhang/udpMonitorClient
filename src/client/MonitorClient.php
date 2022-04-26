@@ -1,7 +1,7 @@
 <?php
 
 
-namespace UdpMonitorClient\src\client;
+namespace UdpMonitorClient\client;
 
 
 use Workerman\Connection\AsyncUdpConnection;
