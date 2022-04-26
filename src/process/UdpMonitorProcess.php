@@ -1,14 +1,15 @@
 <?php
 
 
-namespace client;
+namespace UdpMonitorClient\src\process;
 
 
 use Carbon\Carbon;
+use UdpMonitorClient\src\client\MonitorClient;
 use Workerman\Connection\AsyncUdpConnection;
 use Workerman\Timer;
 
-class UdpMonitorClient
+class UdpMonitorProcess
 {
     /**
      * 网站名称
@@ -46,13 +47,12 @@ class UdpMonitorClient
 
     public function sendMessage(): void
     {
-        $udp_connection = new AsyncUdpConnection($this->host . ':' . $this->port);
         $data = json_encode(["data" => $this->getMemory(), "mark" => "memory"]);
-        $udp_connection->onConnect = function ($udp_connection) use ($data) {
-            $udp_connection->send($data);
-            $udp_connection->close();
-        };
-        $udp_connection->connect();
+        $config = [
+            'host' => $this->host,
+            'port' => $this->port
+        ];
+        MonitorClient::report($config, $data);
     }
 
 
@@ -95,4 +95,6 @@ class UdpMonitorClient
         }
         return $data;
     }
+
+
 }
