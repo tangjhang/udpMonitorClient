@@ -5,7 +5,7 @@ namespace UdpMonitorClient\process;
 
 
 use Carbon\Carbon;
-use UdpMonitorClient\src\client\MonitorClient;
+use UdpMonitorClient\client\MonitorClient;
 use Workerman\Connection\AsyncUdpConnection;
 use Workerman\Timer;
 
