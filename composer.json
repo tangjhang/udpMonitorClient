@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "client\\": "client/"
+            "src\\": "UdpMonitorClient/"
         }
     },
     "authors": [
