@@ -5,7 +5,7 @@
 ```
 'udpMonitorClient' => [
         'enable' => true,
-        'handler' => \client\UdpMonitorClient::class,
+        'handler' => \UdpMonitorClient\src\process\UdpMonitorClient::class,
         'constructor' => [
             // 消费者类目录
             'host' => 'udp://127.0.0.1',    //修改为服务端的地址
